@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5224740421439234704}
   - component: {fileID: 8856404896126781265}
+  - component: {fileID: 2199781157470243365}
   m_Layer: 0
   m_Name: IA
   m_TagString: Untagged
@@ -50,9 +51,26 @@ MonoBehaviour:
   objectsLayer:
     serializedVersion: 2
     m_Bits: 64
-  distance: 5
+  distance: 15
   angle: 45
   detectedObject: {fileID: 0}
+--- !u!114 &2199781157470243365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602526339846047654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5e4169ccdc50d47925b94c3b72efe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  sightSensor: {fileID: 8856404896126781265}
+  baseAttackDistance: 14
+  playerAttackDistance: 10
+  baseTransform: {fileID: 0}
 --- !u!1 &8760147570832550593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,10 +1609,10 @@ GameObject:
   - component: {fileID: 8760147570839836849}
   - component: {fileID: 8602429384617487245}
   - component: {fileID: 1964411990894866889}
-  - component: {fileID: 4893272545728949851}
   - component: {fileID: 3374124684010975896}
   - component: {fileID: 7522021555034331841}
   - component: {fileID: 4840489951588399111}
+  - component: {fileID: 5341258544711176662}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -1696,19 +1714,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &4893272545728949851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8760147570832550707}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b91d5f8143ddb104b8379135e79c8d61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
 --- !u!114 &3374124684010975896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1721,7 +1726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659b008c760cb2a44b01783ae07cb15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 200
+  amount: 200000
   onDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -1750,6 +1755,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71edf030d50c974499284fa2bf160ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &5341258544711176662
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760147570832550707}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8760147570832550709
 GameObject:
   m_ObjectHideFlags: 0

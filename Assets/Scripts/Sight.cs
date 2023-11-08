@@ -9,13 +9,14 @@ public class Sight : MonoBehaviour
 
     public float distance;
     public float angle;
-    public Collider detectedObject;
+    public Collider detectedObject = null;
 
     // Update is called once per frame
     void Update()
     {
         // todo lo que este dentro de esfera metelo a una lista de collider.
         Collider[] colliders = Physics.OverlapSphere(transform.position, distance, objectsLayer);
+        detectedObject = null;
         for (int i = 0; i < colliders.Length; i++)
         {
             // el colider especifico.
@@ -38,6 +39,7 @@ public class Sight : MonoBehaviour
                 else
                 {
                     Debug.DrawLine(transform.position,collider.bounds.center,Color.red,2,true);
+                    detectedObject = null;
                 }
             }
 
@@ -56,5 +58,3 @@ public class Sight : MonoBehaviour
         Gizmos.DrawRay(transform.position,leftDirection*distance);
     }
 }
-
-

@@ -10,21 +10,26 @@ public class EnemyManager : MonoBehaviour
     public UnityEvent onChanged;
 
     // Simpleton design pattern.
-    void Awake(){
-        if(instance == null){
+    void Awake()
+    {
+        if(instance == null)
+        {
             instance = this;
         }
-        else{
+        else
+        {
             Debug.LogError("Duplicated Enemy Manager",gameObject);
         }
     }
 
-    public void AddEnemy(Enemy enemy){
+    public void AddEnemy(Enemy enemy)
+    {
         enemies.Add(enemy);
         onChanged.Invoke();
     }
 
-    public void RemoveEnemy(Enemy enemy){
+    public void RemoveEnemy(Enemy enemy)
+    {
         enemies.Remove(enemy);
         onChanged.Invoke();
     }

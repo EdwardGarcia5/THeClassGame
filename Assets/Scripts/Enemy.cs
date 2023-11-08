@@ -6,11 +6,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start(){
+    void Start()
+    {
         EnemyManager.instance.AddEnemy(this);
     }
 
-    void OnDestroy(){
+    void OnDestroy()
+    {
         EnemyManager.instance.RemoveEnemy(this);
     }
 }

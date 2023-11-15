@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class EnemyFSM : MonoBehaviour
     public float playerAttackDistance;
     public Transform baseTransform;
     private NavMeshAgent agent;
+    public GameObject bulletPrefab;
+    public float lastShootTime;
+    public float fireRate;
     
     private void Awake()
     {
@@ -38,6 +42,23 @@ public class EnemyFSM : MonoBehaviour
         }
     }
 
+    void Shoot()
+    {
+        var timeSinceLastShoot = Time.time - lastShootTime;
+        if(timeSinceLastShoot < fireRate)
+        {
+            lastShootTime = Time.time;
+            Instantiate(bulletPrefab, transform.position, transform.rotation);
+        }
+    }
+
+    void LookTo(Vector3 targetPosition)
+    {
+        Vector3 directionToPosition = Vector3.Normalize(targetPosition - transform.parent.position);
+        directionToPosition.y = 0;
+        transform.parent.forward = directionToPosition;
+    }
+
     void GotoBase()
     {
         agent.isStopped = false;
@@ -57,11 +78,15 @@ public class EnemyFSM : MonoBehaviour
     void AttackBase()
     {
         agent.isStopped = true;
+        LookTo(baseTransform.position);
+        Shoot();
     }
 
     void ChasePlayer()
     {
         agent.isStopped = false;
+        LookTo(sightSensor.detectedObject.transform.position);
+        Shoot();
         if(sightSensor.detectedObject == null)
         {
             currentState = EnemyState.GotoBase;

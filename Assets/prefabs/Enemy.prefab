@@ -71,6 +71,9 @@ MonoBehaviour:
   baseAttackDistance: 14
   playerAttackDistance: 10
   baseTransform: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  lastShootTime: 0
+  fireRate: 0
 --- !u!1 &8760147570832550593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,6 +1616,7 @@ GameObject:
   - component: {fileID: 7522021555034331841}
   - component: {fileID: 4840489951588399111}
   - component: {fileID: 5341258544711176662}
+  - component: {fileID: 7976570910816612015}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -1777,6 +1781,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7976570910816612015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760147570832550707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771c261661278864f90d8dfca11e1eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 8669092499977301329, guid: 2f2b7238c7fcd9e48b71c75d231cc6b8, type: 3}
 --- !u!1 &8760147570832550709
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,12 +12,7 @@ public class ShooterMovInput : MonoBehaviour
     private float lookValue;
     public GameObject prefab;
     public GameObject shootPoint;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ParticleSystem muzzleEffect;
 
     private void Awake(){
         Cursor.visible = false;
@@ -34,9 +29,11 @@ public class ShooterMovInput : MonoBehaviour
 
     public void OnFire(InputValue value){
         if(value.isPressed){
+
             GameObject clone = Instantiate(prefab);
             clone.transform.position = shootPoint.transform.position;
             clone.transform.rotation = shootPoint.transform.rotation;
+            muzzleEffect.Play();
         }
     }
 
